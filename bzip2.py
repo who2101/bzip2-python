@@ -11,11 +11,12 @@ class BZ2:
                 with open(path, 'rb') as file:
                     with bz2.BZ2File(path + '.bz2', 'wb') as bzipped:
                         bzipped.write(file.read())
-                        break
+                        return True
+
+        return False
 
     def compress_folder(folder: str) -> None:
         for root, dirs, files in os.walk(folder):
             for file in files:
-                for ext in exts:
-                    if not BZ2.compress_file(os.path.join(root, file)):
-                        continue
+                if not BZ2.compress_file(os.path.join(root, file)):
+                    continue
