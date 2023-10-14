@@ -1,1 +1,1 @@
-# bzip2-python
+# A simple file compression program for FastDL
