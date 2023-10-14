@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from tkinter import filedialog
-from bzip2 import compress_file, convert
+from bzip2 import BZ2
 
 class App:
     def __init__(self, master):
@@ -15,7 +15,7 @@ class App:
         self.select_button = tk.Button(self.master, text="Select path", command=self.select_path)
         self.select_button.pack(expand=True, ipadx=50, ipady=10)
 
-        self.convert_button = tk.Button(self.master, text="Convert", command=self.convert)
+        self.convert_button = tk.Button(self.master, text="Convert", command=lambda:BZ2.compress_folder(self.selected_path))
         self.convert_button.pack(expand=True, ipadx=50, ipady=10)
         self.convert_button['state'] = 'disabled'
 
@@ -24,9 +24,6 @@ class App:
 
         if self.selected_path != "":
             self.convert_button['state'] = "normal"
-
-    def convert(self):
-        convert(self.selected_path)
 
 root = tk.Tk()
 app = App(root)

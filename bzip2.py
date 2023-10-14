@@ -1,28 +1,21 @@
-import bz2
-import os
+import os, bz2
 
 exts = [".bsp", ".mp3", ".wav", ".vmt", ".vtf", ".nav"]
 
-def compress_file(path: str) -> None:
-    """
-    Сжимает файл в bz2 формате по указанному пути
-    """
+class BZ2:
+    def compress_file(path: str) -> bool:
+        for ext in exts:
+            if ext not in path:
+                continue
+            else:
+                with open(path, 'rb') as file:
+                    with bz2.BZ2File(path + '.bz2', 'wb') as bzipped:
+                        bzipped.write(file.read())
+                        break
 
-    with open(path, 'rb') as file:
-        with bz2.BZ2File(path + '.bz2', 'wb') as bzipped:
-            bzipped.write(file.read())
-
-def convert(path: str) -> None:
-    """
-    Сжимает все файлы в bz2 по пути папки
-    """
-
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            for ext in exts:
-                if not file.endswith(ext):
-                    continue
-                else:
-                    filepath = os.path.join(root, file)
-                    compress_file(filepath)
-                    print(filepath + " is compressed")
+    def compress_folder(folder: str) -> None:
+        for root, dirs, files in os.walk(folder):
+            for file in files:
+                for ext in exts:
+                    if not BZ2.compress_file(os.path.join(root, file)):
+                        continue
