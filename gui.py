@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import ttk
 
 from tkinter import filedialog
 from bzip2 import BZ2
