@@ -7,10 +7,10 @@ from bzip2 import BZ2
 class App:
     def __init__(self, master):
         self.master = master
-        self.setupgui()
+        self.setup()
         self.selected_path = ""
 
-    def setupgui(self):
+    def setup(self):
         self.master.title("bz2 converter")
         self.select_button = tk.Button(self.master, text="Select path", command=self.select_path)
         self.select_button.pack(expand=True, ipadx=50, ipady=10)
