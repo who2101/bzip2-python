@@ -4,6 +4,9 @@ exts = [".bsp", ".mp3", ".wav", ".vmt", ".vtf", ".nav"]
 
 class BZ2:
     def compress_file(path: str) -> bool:
+        if ".bz2" in path:
+            return False
+        
         for ext in exts:
             if ext not in path:
                 continue
