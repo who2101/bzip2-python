@@ -1,6 +1,6 @@
 import os, bz2
 
-exts = [".bsp", ".mp3", ".wav", ".vmt", ".vtf", ".nav"]
+exts = [".bsp", ".mp3", ".wav", ".vmt", ".vtf", ".nav", ".mdl", ".phy", ".vvd", ".vtx"]
 
 class BZ2:
     def compress_file(path: str) -> bool:
