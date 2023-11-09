@@ -1,16 +1,12 @@
 import os, bz2
+from pathlib import Path
 
 exts = [".bsp", ".mp3", ".wav", ".vmt", ".vtf", ".nav", ".mdl", ".phy", ".vvd", ".vtx"]
 
 class BZ2:
     def compress_file(path: str) -> bool:
-        if ".bz2" in path:
-            return False
-        
         for ext in exts:
-            if ext not in path:
-                continue
-            else:
+            if Path(path).suffix == ext:
                 with open(path, 'rb') as file:
                     with bz2.BZ2File(path + '.bz2', 'wb') as bzipped:
                         bzipped.write(file.read())
