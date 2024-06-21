@@ -1,7 +1,7 @@
 import tkinter as tk
 
 from tkinter import filedialog
-from bzip2 import BZ2
+from src.bzip2 import BZ2
 
 class App:
     def __init__(self, master):
@@ -27,3 +27,6 @@ class App:
 root = tk.Tk()
 app = App(root)
 root.geometry("250x250")
+
+if __name__ == '__main__':
+    root.mainloop()

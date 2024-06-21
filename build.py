@@ -15,7 +15,7 @@ PyInstaller.__main__.run([
     '--clean',
     '-n',
     exe_name,
-    'main.py'
+    'src/gui.py'
 ])
 
 
